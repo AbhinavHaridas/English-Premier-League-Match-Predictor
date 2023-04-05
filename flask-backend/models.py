@@ -3,6 +3,7 @@ from flask_cors import CORS
 from utils import predict_home, predict_away, predict_match_result
 
 app = Flask(__name__)
+CORS(app)
 
 def responseFormatter(status_code, status, data, message):
     return {
@@ -11,7 +12,8 @@ def responseFormatter(status_code, status, data, message):
         'data': data,
         'message': message
     }
-
+    # response.headers.add("Access-Control-Allow-Origin", "*")
+    # return response
 
 @app.route('/')
 def index():

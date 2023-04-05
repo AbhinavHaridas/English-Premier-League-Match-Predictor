@@ -34,4 +34,4 @@ export const TEAMS = ['Blackpool',
  'Brighton and Hove Albion',
  'Huddersfield Town',
  'Sheffield United',
- 'Leeds United'];
+ 'Leeds United'].sort();
