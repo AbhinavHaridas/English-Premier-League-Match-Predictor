@@ -25,7 +25,7 @@ def predict_home(home_team_code,away_team_code):
     # filter pl_data to include only the rows for the specified team code
     pl_data_team = pl_data[pl_data["away_team_code"] == away_team_code]
 
-    target_seasons = ['20/21','15/16','16/17','17/18','18/19','19/20']
+    target_seasons = ['15/16','16/17','17/18','18/19','19/20','20/21']
     target_data_df = Xhome[(Xhome["home_team_code"] == home_team_code) &
      (pl_data_team["away_team_code"] == away_team_code) &
      (pl_data_team['season'].isin(target_seasons))]
