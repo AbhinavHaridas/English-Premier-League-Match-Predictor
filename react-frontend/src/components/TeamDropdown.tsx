@@ -10,7 +10,9 @@ export const TeamDropDown: React.FC = () => {
     const [results, setResults] = useState(null);
 
     const buttonSelect = (): void => {
-        if (homeTeam !== awayTeam) {
+        if (homeTeam === "" || awayTeam === "") {
+            alert("Enter both teams")
+        } else if (homeTeam !== awayTeam) {
             console.log(homeTeam);
             console.log(awayTeam);
             setSelect(1);
@@ -25,8 +27,7 @@ export const TeamDropDown: React.FC = () => {
             }).catch((error) => {
                 console.log(error);
             });
-        }
-        else {
+        } else {
             alert('Cannot predict for same teams')
         }
     }
