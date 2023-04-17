@@ -8,6 +8,7 @@
     width: 25%;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    background: transparent;
 }
 
 /* .scroll-list::-webkit-scrollbar{
@@ -20,6 +21,7 @@
 
 .list-item{
     text-align: center;
+    background:transparent;
 }
 
 .middle-item{

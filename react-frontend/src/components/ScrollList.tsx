@@ -1,54 +1,56 @@
-import { IonContent, IonItem, IonLabel, IonList } from '@ionic/react'
-import React, { useEffect, useRef } from 'react'
-import { TEAMS } from '../keys'
-import './ScrollList.css'
+import { IonContent, IonItem, IonLabel, IonList } from "@ionic/react";
+import React, { useEffect, useRef } from "react";
+import { TEAMS } from "../Teams";
+import "./ScrollList.css";
 
 interface ScrollListProps {
-    setTeam: (team: string) => void;
+  setTeam: (team: string) => void;
 }
 
-const ScrollList: React.FC<ScrollListProps> = ({setTeam}) => {
-    const listRef = useRef<HTMLIonListElement>(null);
+const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
+  const listRef = useRef<HTMLIonListElement>(null);
 
-    const handleScroll = () => {
-        const list = listRef.current as HTMLElement;
-        const items = list.querySelectorAll("ion-item");
-        const itemHeight = items[0].offsetHeight;
-        const middleIndex = Math.ceil(list.scrollTop / itemHeight);
-        const prevIndex = middleIndex - 1;
-        const middleItem = items[middleIndex];
-        const prevItem = items[prevIndex];
-        const nextItem = items[middleIndex + 1];
+  const handleScroll = () => {
+    const list = listRef.current as HTMLElement;
+    const items = list.querySelectorAll("ion-item");
+    const itemHeight = items[0].offsetHeight;
+    const middleIndex = Math.ceil(list.scrollTop / itemHeight);
+    const prevIndex = middleIndex - 1;
+    const middleItem = items[middleIndex];
+    const prevItem = items[prevIndex];
+    const nextItem = items[middleIndex + 1];
 
-        if (prevItem.classList.contains('middle-item')) {
-            prevItem.classList.remove('middle-item');
-        }
+    if (prevItem && prevItem.classList.contains("middle-item")) {
+      prevItem.classList.remove("middle-item");
+    }
 
-        if (nextItem.classList.contains('middle-item')) {
-            nextItem.classList.remove('middle-item');
-        }
+    if (
+      nextItem &&
+      nextItem.classList.contains("middle-item")
+    ) {
+      nextItem.classList.remove("middle-item");
+    }
 
-        middleItem.classList.add('middle-item');
-        setTeam(middleItem.innerText);
-        // console.log(middleItem.innerText);
+    middleItem && middleItem.classList.add("middle-item");
+    setTeam(middleItem.innerText);
+    // console.log(middleItem.innerText);
+  };
 
-    };
-
-    return (
-      <IonList class="scroll-list" ref={listRef} onScroll={handleScroll}>
-        <IonItem>
-          <IonLabel></IonLabel>
+  return (
+    <IonList class="scroll-list" ref={listRef} onScroll={handleScroll}>
+      <IonItem>
+        <IonLabel></IonLabel>
+      </IonItem>
+      {TEAMS.map((team) => (
+        <IonItem key={team} className="list-item">
+          <IonLabel>{team}</IonLabel>
         </IonItem>
-        {TEAMS.map((team) => (
-          <IonItem key={team} className='list-item'>
-            <IonLabel>{team}</IonLabel>
-          </IonItem>
-        ))}
-        <IonItem>
-          <IonLabel></IonLabel>
-        </IonItem>
-      </IonList>
-    );
-}
+      ))}
+      <IonItem>
+        <IonLabel></IonLabel>
+      </IonItem>
+    </IonList>
+  );
+};
 
-export default ScrollList
+export default ScrollList;
