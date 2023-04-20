@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from utils import predict_home, predict_away, predict_match_result
+from utils import predict_match_result,get_latest_matches
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +26,12 @@ def predict_match():
     result = predict_match_result(home_team, away_team)
     return responseFormatter(200, 'success', result, 'Match prediction successful')
 
+@app.route('/get_match_history', methods=['POST'])
+def get_match_history():
+    home_team = request.form['home_team']
+    away_team = request.form['away_team']
+    result = get_latest_matches(home_team, away_team)
+    return responseFormatter(200, 'success', result, 'Fetched match history successfully')
 
 if __name__ == '__main__':
     app.run(debug=True)

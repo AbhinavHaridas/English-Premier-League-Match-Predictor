@@ -70,3 +70,15 @@ def predict_match_result(home_team_name,away_team_name):
     print( {'home_team_result': home_team_result, 'away_team_result': away_team_result})
     return {'home_team_result': int(home_team_result), 'away_team_result': int(away_team_result)}
 
+
+def get_latest_matches(home_team,away_team):
+    # Filter the DataFrame to include only matches where home_team and away_team played against each other
+    matches = pl_data[(pl_data['home_team'] == home_team) & (pl_data['away_team'] == away_team)].copy()
+    
+    # Convert the 'date' column to datetime format and sort the DataFrame by date in descending order
+    matches['date'] = pd.to_datetime(matches['date'])
+    matches = matches.sort_values(by='date', ascending=False)
+    
+    # Select only the desired columns and return as a list of dictionaries
+    selected_cols = ['season','date','home_team', 'away_team', 'result_full']
+    return matches[selected_cols].head(5).to_dict('records')
