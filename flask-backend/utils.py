@@ -78,7 +78,15 @@ def get_latest_matches(home_team,away_team):
     # Convert the 'date' column to datetime format and sort the DataFrame by date in descending order
     matches['date'] = pd.to_datetime(matches['date'])
     matches = matches.sort_values(by='date', ascending=False)
+
+    # Creating an object to store the history of the two teams of the latest 5 matches and additional stats along with it
+    result = {}
+    result['home_avg_goal_scored'] = round(matches.head(5)['result_home'].mean(),2)
+    result['away_avg_goal_scored'] = round(matches.head(5)['result_away'].mean(),2)
+    result['avg_home_possession'] = round(matches.head(5)['home_possession'].mean(),2)
+    result['avg_away_possession'] = round(matches.head(5)['away_possession'].mean(),2)
     
     # Select only the desired columns and return as a list of dictionaries
     selected_cols = ['season','date','home_team', 'away_team', 'result_full']
-    return matches[selected_cols].head(5).to_dict('records')
+    result['history'] = matches[selected_cols].head(5).to_dict('records')
+    return result
