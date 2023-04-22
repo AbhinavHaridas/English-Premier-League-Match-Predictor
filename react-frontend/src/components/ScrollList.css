@@ -1,0 +1,32 @@
+.scroll-list{
+    height: 20%;
+    overflow-y: scroll ;
+    overflow-x: hidden ;
+    padding: 0 ;
+    margin: 0 ;
+    list-style: none ;
+    width: 25%;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    background: transparent;
+}
+
+/* .scroll-list::-webkit-scrollbar{
+    display: none;
+} */
+
+.scroll-list::-webkit-scrollbar{
+    width: 0px;
+}
+
+.list-item{
+    text-align: center;
+    background:transparent;
+}
+
+.middle-item{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    transition: font-size 0.3s ease-in-out;
+}
