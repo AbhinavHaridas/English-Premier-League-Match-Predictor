@@ -3,7 +3,7 @@ import arsenal from '../Images/arsenal.jpg';
 import bournemouth from '../Images/bournemouth.jpg';
 import astonVilla from '../Images/aston-villa.jpg';
 import burnley from '../Images/burnley.jpg';
-import chelsea from '../Images/chelsea.jpg';
+import chelsea from '../Images/chelsea.jpeg';
 import crystalPalace from '../Images/crystal-palace.jpg';
 import everton from '../Images/everton.jpg';
 import fulham from '../Images/fulham.jpg';
