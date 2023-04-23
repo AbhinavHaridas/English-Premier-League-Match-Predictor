@@ -83,8 +83,8 @@ def get_latest_matches(home_team,away_team):
     result = {}
     result['home_avg_goal_scored'] = round(matches.head(5)['result_home'].mean(),2)
     result['away_avg_goal_scored'] = round(matches.head(5)['result_away'].mean(),2)
-    result['avg_home_possession'] = round(matches.head(5)['home_possession'].mean(),2)
-    result['avg_away_possession'] = round(matches.head(5)['away_possession'].mean(),2)
+    result['avg_home_possession'] = str(round(matches.head(5)['home_possession'].mean(),2))+ '%'
+    result['avg_away_possession'] = str(round(matches.head(5)['away_possession'].mean(),2))+'%'
     
     # Select only the desired columns and return as a list of dictionaries
     selected_cols = ['season','date','home_team', 'away_team', 'result_full']
