@@ -43,13 +43,13 @@ import manCityLogo from '../Images/manchester-city.png';
 import manUnitedLogo from '../Images/manchester-united.png';
 import newcastleLogo from '../Images/newcastle-united.png';
 import middlesbroughLogo from '../Images/middlesbrough.png';
-import norwichCityLogo from '../Images/norwich-city.png';
+import norwichCityLogo from '../Images/norwich.png';
 import sheffieldUnitedLogo from '../Images/sheffield-united.png';
 import southamptonLogo from '../Images/southampton.png';
 import tottenhamLogo from '../Images/tottenham.png';
 import watfordLogo from '../Images/watford.png';
 import westBromwichAlbionLogo from '../Images/west-bromwich-albion.png';
-import westHamUnitedLogo from '../Images/west-ham-united.png';
+import westHamUnitedLogo from '../Images/west-ham.png';
 import wolvesLogo from '../Images/wolves.png';
 
 interface ImageMap {

@@ -1,19 +1,18 @@
 import {
-  IonApp,
   IonCol,
   IonContent,
   IonGrid,
-  IonHeader,
   IonPage,
   IonRow,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React from "react";
 
 // CSS import
 import "./History.css";
 
 // Components import
 import ScoreCard from "../components/ScoreCard";
+import { Logos } from "../theme/Images";
 
 const History: React.FC = () => {
   let homeTeam: string = "Leeds";
@@ -22,10 +21,8 @@ const History: React.FC = () => {
   let homeTeamScore: number = 2;
   let awayTeamScore: number = 1;
 
-  let homeTeamLogo: string =
-    "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png";
-  let awayTeamLogo: string =
-    "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/1200px-Manchester_United_FC_crest.svg.png";
+  let homeTeamLogo: string = Logos['Leeds United']
+  let awayTeamLogo: string = Logos['AFC Bournemouth'];
 
   return (
     <IonPage>
