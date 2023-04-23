@@ -1,3 +1,5 @@
+// BACKGROUND IMAGES
+
 import brighton from '../Images/brighton-and-hove-albion.jpg';
 import arsenal from '../Images/arsenal.jpg';
 import bournemouth from '../Images/bournemouth.jpg';
@@ -23,25 +25,52 @@ import westBromwichAlbion from '../Images/west-bromwich-albion.jpg';
 import westHamUnited from '../Images/west-ham-united.jpg';
 import wolves from '../Images/wolves.jpg';
 
+// TEAM LOGOS
+
+import brightonLogo from '../Images/brighton.png';
+import arsenalLogo from '../Images/arsenal.png';
+import bournemouthLogo from '../Images/bournemouth.png';
+import astonVillaLogo from '../Images/aston-villa.png';
+import burnleyLogo from '../Images/burnley.png';
+import chelseaLogo from '../Images/chelsea.png';
+import crystalPalaceLogo from '../Images/crystal-palace.png';
+import evertonLogo from '../Images/everton.png';
+import fulhamLogo from '../Images/fulham.png';
+import leedsUnitedLogo from '../Images/leeds-united.png';
+import leicesterCityLogo from '../Images/leicester-city.png';
+import liverpoolLogo from '../Images/liverpool.png';
+import manCityLogo from '../Images/manchester-city.png';
+import manUnitedLogo from '../Images/manchester-united.png';
+import newcastleLogo from '../Images/newcastle-united.png';
+import middlesbroughLogo from '../Images/middlesbrough.png';
+import norwichCityLogo from '../Images/norwich-city.png';
+import sheffieldUnitedLogo from '../Images/sheffield-united.png';
+import southamptonLogo from '../Images/southampton.png';
+import tottenhamLogo from '../Images/tottenham.png';
+import watfordLogo from '../Images/watford.png';
+import westBromwichAlbionLogo from '../Images/west-bromwich-albion.png';
+import westHamUnitedLogo from '../Images/west-ham-united.png';
+import wolvesLogo from '../Images/wolves.png';
+
 interface ImageMap {
   [key: string]: string;
 }
 
-export const Images:ImageMap = {
-    "Brighton and Hove Albion": brighton,
-    "Arsenal": arsenal,
-    "AFC Bournemouth": bournemouth,
-    "Aston Villa": astonVilla,
-    "Burnley": burnley,
-    "Chelsea": chelsea,
-    "Crystal Palace": crystalPalace,
-    "Everton": everton,
-    "Fulham": fulham,
-    "Leeds United": leedsUnited,
-    "Leicester City": leicesterCity,
-    "Liverpool": liverpool,
-    "Manchester City": manCity,
-    "Manchester United": manUnited,
+export const Images: ImageMap = {
+  "Brighton and Hove Albion": brighton,
+  "Arsenal": arsenal,
+  "AFC Bournemouth": bournemouth,
+  "Aston Villa": astonVilla,
+  "Burnley": burnley,
+  "Chelsea": chelsea,
+  "Crystal Palace": crystalPalace,
+  "Everton": everton,
+  "Fulham": fulham,
+  "Leeds United": leedsUnited,
+  "Leicester City": leicesterCity,
+  "Liverpool": liverpool,
+  "Manchester City": manCity,
+  "Manchester United": manUnited,
   "Newcastle United": newcastle,
   "Middlesbrough": middlesbrough,
   "Norwich City": norwichCity,
@@ -54,3 +83,30 @@ export const Images:ImageMap = {
   "Wolverhampton Wanderers": wolves
 
 };
+
+export const Logos: ImageMap = {
+  "Brighton and Hove Albion": brightonLogo,
+  "Arsenal": arsenalLogo,
+  "AFC Bournemouth": bournemouthLogo,
+  "Aston Villa": astonVillaLogo,
+  "Burnley": burnleyLogo,
+  "Chelsea": chelseaLogo,
+  "Crystal Palace": crystalPalaceLogo,
+  "Everton": evertonLogo,
+  "Fulham": fulhamLogo,
+  "Leeds United": leedsUnitedLogo,
+  "Leicester City": leicesterCityLogo,
+  "Liverpool": liverpoolLogo,
+  "Manchester City": manCityLogo,
+  "Manchester United": manUnitedLogo,
+  "Newcastle United": newcastleLogo,
+  "Middlesbrough": middlesbroughLogo,
+  "Norwich City": norwichCityLogo,
+  "Sheffield United": sheffieldUnitedLogo,
+  "Southampton": southamptonLogo,
+  "Tottenham Hotspur": tottenhamLogo,
+  "Watford": watfordLogo,
+  "West Bromwich Albion": westBromwichAlbionLogo,
+  "West Ham United": westHamUnitedLogo,
+  "Wolverhampton Wanderers": wolvesLogo
+}
