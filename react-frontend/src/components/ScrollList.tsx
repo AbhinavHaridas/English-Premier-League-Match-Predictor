@@ -41,7 +41,24 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       const items = list.querySelectorAll("ion-item");
       const itemHeight = items[0].offsetHeight;
       const upperIndex = Math.ceil(list.scrollTop / itemHeight);
-      const middleItem = items[upperIndex + 1];
+      const middleIndex = upperIndex + 1;
+      const prevIndex = middleIndex - 1;
+      const middleItem = items[middleIndex];
+      const prevItem = items[prevIndex];
+      const nextItem = items[middleIndex + 1];
+      // bold text effect
+      if (prevItem && prevItem.classList.contains("middle-item")) {
+        prevItem.classList.remove("middle-item");
+      }
+
+      if (
+        nextItem &&
+        nextItem.classList.contains("middle-item")
+      ) {
+        nextItem.classList.remove("middle-item");
+      }
+
+      middleItem && middleItem.classList.add("middle-item");
       setTeam(middleItem.innerText);
     }
 
@@ -80,8 +97,7 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
   );
 };
 
-export default ScrollList;  
+export default ScrollList;
 
 
 
- 

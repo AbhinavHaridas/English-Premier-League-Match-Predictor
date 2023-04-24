@@ -9,8 +9,6 @@
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     background: transparent;
-    border-radius: 10px;
-    box-shadow: rgba(240, 237, 237) 0px 1px 4px, rgb(240, 237, 237) 0px 0px 0px 3px;
 }
 
 /* .scroll-list::-webkit-scrollbar{
