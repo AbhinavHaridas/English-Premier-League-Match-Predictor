@@ -1,14 +1,16 @@
 .scroll-list{
     height: 20%;
-    overflow-y: scroll ;
-    overflow-x: hidden ;
-    padding: 0 ;
-    margin: 0 ;
-    list-style: none ;
-    width: 25%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 30%;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     background: transparent;
+    border-radius: 10px;
+    box-shadow: rgba(240, 237, 237) 0px 1px 4px, rgb(240, 237, 237) 0px 0px 0px 3px;
 }
 
 /* .scroll-list::-webkit-scrollbar{
@@ -21,7 +23,7 @@
 
 .list-item{
     text-align: center;
-    background:transparent;
+    font-size: 2.4vmin;
 }
 
 .middle-item{

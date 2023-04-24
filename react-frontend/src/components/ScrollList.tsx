@@ -40,8 +40,8 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       const list = listRef.current as HTMLElement;
       const items = list.querySelectorAll("ion-item");
       const itemHeight = items[0].offsetHeight;
-      const middleIndex = Math.ceil(list.scrollTop / itemHeight);
-      const middleItem = items[middleIndex];
+      const upperIndex = Math.ceil(list.scrollTop / itemHeight);
+      const middleItem = items[upperIndex + 1];
       setTeam(middleItem.innerText);
     }
 
@@ -52,7 +52,7 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [dragging, dragStartY]);
+  }, [dragging, dragStartY, setTeam]);
 
   function handleMouseDown(e: React.MouseEvent) {
     setDragStartY(e.clientY);
