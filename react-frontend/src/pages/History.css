@@ -17,12 +17,16 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 27px;
+    color: #92FF8F;
+}
+
+.our-preds {
     color: #6CDC69;
 }
 
 .logo{
-    width: 23%;
-    height: 50%;
+    width: 50%;
+    height: 6.75rem;
     border-radius: 50%;
 }
 
@@ -33,6 +37,7 @@
     font-size: 3.725rem;
     margin: 0;
     color: #92FF8F;
+    padding-bottom: 1rem;
 }
 
 .teams {

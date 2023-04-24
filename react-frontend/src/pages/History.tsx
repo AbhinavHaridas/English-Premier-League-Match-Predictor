@@ -1,10 +1,4 @@
-import {
-  IonCol,
-  IonContent,
-  IonGrid,
-  IonPage,
-  IonRow,
-} from "@ionic/react";
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 import React from "react";
 
 // CSS import
@@ -21,8 +15,8 @@ const History: React.FC = () => {
   let homeTeamScore: number = 2;
   let awayTeamScore: number = 1;
 
-  let homeTeamLogo: string = Logos['Leeds United']
-  let awayTeamLogo: string = Logos['AFC Bournemouth'];
+  let homeTeamLogo: string = Logos["Newcastle United"];
+  let awayTeamLogo: string = Logos["Middlesbrough"];
 
   return (
     <IonPage>
@@ -30,17 +24,31 @@ const History: React.FC = () => {
         <div className="history-wrap">
           <div className="header">
             <div className="teams">
-              <img className="logo" src={homeTeamLogo} alt={homeTeam} />{" "}
+              <div
+                className="logo"
+                style={{
+                  background: `url(${homeTeamLogo})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <p className="teamName">{homeTeam}</p>
             </div>
-            <div className="teams">
+            <div className="teams" style={{justifyContent: 'end'}}>
               <p className="scoreline">
                 {homeTeamScore}-{awayTeamScore}
               </p>
-              <p className="teamName">(Our Prediction)</p>
+              <p className="teamName our-preds">(Our Prediction)</p>
             </div>
             <div className="teams">
-              <img className="logo" src={awayTeamLogo} alt={awayTeam} />{" "}
+              <div
+                className="logo"
+                style={{
+                  background: `url(${awayTeamLogo})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+              ></div>
               <p className="teamName">{awayTeam}</p>
             </div>
           </div>
@@ -72,9 +80,15 @@ const History: React.FC = () => {
                 const backgroundColor = index % 2 === 0 ? "#6142A4" : "#4D3580";
                 return (
                   <IonRow style={{ backgroundColor }} key={index}>
-                    <IonCol size="4" className="row-text">20/21</IonCol>
-                    <IonCol size="4" className="row-text">{new Date().toLocaleDateString()}</IonCol>
-                    <IonCol size="4" className="row-text">2-1</IonCol>
+                    <IonCol size="4" className="row-text">
+                      20/21
+                    </IonCol>
+                    <IonCol size="4" className="row-text">
+                      {new Date().toLocaleDateString()}
+                    </IonCol>
+                    <IonCol size="4" className="row-text">
+                      2-1
+                    </IonCol>
                   </IonRow>
                 );
               })}
