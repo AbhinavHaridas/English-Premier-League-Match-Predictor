@@ -9,6 +9,7 @@ import ScoreCard from "../components/ScoreCard";
 import { Logos } from "../theme/Images";
 import { useLocation } from "react-router-dom";
 
+// Intefaces
 interface MatchHistory {
   home_team: string;
   away_team: string;
@@ -16,8 +17,6 @@ interface MatchHistory {
   result_full: string;
   season: string;
 }
-
-const dateOptions = { day: "numeric", month: "numeric", year: "numeric" };
 
 interface MatchHistoryProps {
   data: {
@@ -37,9 +36,10 @@ interface MatchHistoryProps {
 
 
 const History: React.FC = () => {
+  // Getting the data from the previous page
   const location = useLocation<{ match_history: MatchHistoryProps }>();
-  let result = location.state["match_history"]["data"];
-  console.log(result);
+  let result = location.state["match_history"] && location.state["match_history"]["data"];
+  
   return (
     <IonPage>
       <IonContent>
