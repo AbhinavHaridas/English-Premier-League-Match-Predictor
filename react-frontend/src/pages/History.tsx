@@ -1,5 +1,6 @@
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 // CSS import
 import "./History.css";
@@ -39,6 +40,15 @@ const History: React.FC = () => {
   // Getting the data from the previous page
   const location = useLocation<{ match_history: MatchHistoryProps }>();
   let result = location.state["match_history"] && location.state["match_history"]["data"];
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    if (history.length > 1) {
+      console.log("history",history);
+      history.goBack();
+    }
+  };
   
   return (
     <IonPage>
@@ -77,6 +87,7 @@ const History: React.FC = () => {
               ></div>
               <p className="teamName">{result["away_team"]}</p>
             </div>
+            <button className="back-btn">Back</button>
           </div>
           <div className="prev-meeting">Previous meetings</div>
           <div className="score-history-wrap">
