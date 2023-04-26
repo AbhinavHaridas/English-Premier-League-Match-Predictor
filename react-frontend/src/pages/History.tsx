@@ -39,120 +39,123 @@ interface MatchHistoryProps {
 const History: React.FC = () => {
   // Getting the data from the previous page
   const location = useLocation<{ match_history: MatchHistoryProps }>();
-  let result = location.state["match_history"] && location.state["match_history"]["data"];
+  let result =
+    location.state && location.state["match_history"] &&
+    location.state["match_history"]["data"];
 
   const history = useHistory();
 
   const handleClick = () => {
-    if (history.length > 1) {
-      console.log("history",history);
-      history.goBack();
-    }
+    history.goBack();
   };
   
   return (
     <IonPage>
       <IonContent>
-        <div className="history-wrap">
-          <div className="header">
-            <div className="teams">
-              <div
-                onClick={() => {
-                  console.log(result);
-                }}
-                className="logo"
-                style={{
-                  background: `url(${Logos[result["home_team"]]})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <p className="teamName">{result["home_team"]}</p>
+        {result && (
+          <div className="history-wrap">
+            <div className="header">
+              <div className="teams">
+                <div
+                  onClick={() => {
+                    console.log(result);
+                  }}
+                  className="logo"
+                  style={{
+                    background: `url(${Logos[result["home_team"]]})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <p className="teamName">{result["home_team"]}</p>
+              </div>
+              <div className="teams" style={{ justifyContent: "end" }}>
+                <p className="scoreline">
+                  {result.predicted_result.home_team_result}-
+                  {result.predicted_result.away_team_result}
+                </p>
+                <p className="teamName our-preds">(Our Prediction)</p>
+              </div>
+              <div className="teams">
+                <div
+                  className="logo"
+                  style={{
+                    background: `url(${Logos[result["away_team"]]})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <p className="teamName">{result["away_team"]}</p>
+              </div>
+              <button className="back-btn" onClick={handleClick}>
+                Back
+              </button>
             </div>
-            <div className="teams" style={{ justifyContent: "end" }}>
-              <p className="scoreline">
-                {result.predicted_result.home_team_result}-
-                {result.predicted_result.away_team_result}
-              </p>
-              <p className="teamName our-preds">(Our Prediction)</p>
-            </div>
-            <div className="teams">
-              <div
-                className="logo"
-                style={{
-                  background: `url(${Logos[result["away_team"]]})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-              ></div>
-              <p className="teamName">{result["away_team"]}</p>
-            </div>
-            <button className="back-btn">Back</button>
-          </div>
-          <div className="prev-meeting">Previous meetings</div>
-          <div className="score-history-wrap">
-            <div className="sec1">
-              <ScoreCard
-                avgGoals={result["home_avg_goal_scored"]}
-                text="Average goals scored by home team"
-              />
-              <ScoreCard
-                avgGoals={result["avg_home_possession"]}
-                text="Average Possession of home team"
-              />
-            </div>
-            <IonGrid className="history-table">
-              {result["history"].length === 0 ? (
-                <IonRow>
-                  <IonCol size="12" className="row-text">
-                    No match history available
-                  </IonCol>
-                </IonRow>
-              ) : (
-                <>
+            <div className="prev-meeting">Previous meetings</div>
+            <div className="score-history-wrap">
+              <div className="sec1">
+                <ScoreCard
+                  avgGoals={result["home_avg_goal_scored"]}
+                  text="Average goals scored by home team"
+                />
+                <ScoreCard
+                  avgGoals={result["avg_home_possession"]}
+                  text="Average Possession of home team"
+                />
+              </div>
+              <IonGrid className="history-table">
+                {result["history"].length === 0 ? (
                   <IonRow>
-                    <IonCol size="4">
-                      <strong style={{ color: "#6CDC69" }}>Season</strong>
-                    </IonCol>
-                    <IonCol size="4">
-                      <strong style={{ color: "#6CDC69" }}>Date</strong>
-                    </IonCol>
-                    <IonCol size="4">
-                      <strong style={{ color: "#6CDC69" }}>Result</strong>
+                    <IonCol size="12" className="row-text">
+                      No match history available
                     </IonCol>
                   </IonRow>
-                  {result["history"].map((match: MatchHistory, index: any) => {
-                    const backgroundColor =
-                      index % 2 === 0 ? "#6142A4" : "#4D3580";
-                    return (
-                      <IonRow style={{ backgroundColor }} key={index}>
-                        <IonCol size="4" className="row-text">
-                          {match["season"]}
-                        </IonCol>
-                        <IonCol size="4" className="row-text">
-                          {new Date(match["date"]).toLocaleDateString()}
-                        </IonCol>
-                        <IonCol size="4" className="row-text">
-                          {match["result_full"]}
-                        </IonCol>
-                      </IonRow>
-                    );
-                  })}
-                </>
-              )}
-            </IonGrid>
-            <div className="sec1">
-              <ScoreCard
-                avgGoals={result["away_avg_goal_scored"]}
-                text="Average goals scored by away team"
-              />
-              <ScoreCard
-                avgGoals={result["avg_away_possession"]}
-                text="Average Possession of away team"
-              />
+                ) : (
+                  <>
+                    <IonRow>
+                      <IonCol size="4">
+                        <strong style={{ color: "#6CDC69" }}>Season</strong>
+                      </IonCol>
+                      <IonCol size="4">
+                        <strong style={{ color: "#6CDC69" }}>Date</strong>
+                      </IonCol>
+                      <IonCol size="4">
+                        <strong style={{ color: "#6CDC69" }}>Result</strong>
+                      </IonCol>
+                    </IonRow>
+                    {result["history"].map((match: MatchHistory, index: any) => {
+                      const backgroundColor =
+                        index % 2 === 0 ? "#6142A4" : "#4D3580";
+                      return (
+                        <IonRow style={{ backgroundColor }} key={index}>
+                          <IonCol size="4" className="row-text">
+                            {match["season"]}
+                          </IonCol>
+                          <IonCol size="4" className="row-text">
+                            {new Date(match["date"]).toLocaleDateString()}
+                          </IonCol>
+                          <IonCol size="4" className="row-text">
+                            {match["result_full"]}
+                          </IonCol>
+                        </IonRow>
+                      );
+                    })}
+                  </>
+                )}
+              </IonGrid>
+              <div className="sec1">
+                <ScoreCard
+                  avgGoals={result["away_avg_goal_scored"]}
+                  text="Average goals scored by away team"
+                />
+                <ScoreCard
+                  avgGoals={result["avg_away_possession"]}
+                  text="Average Possession of away team"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </IonContent>
     </IonPage>
   );
