@@ -22,6 +22,8 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       const middleIndex = Math.ceil(scrollTop / itemHeight);
       const newIndex = middleIndex - Math.round(deltaY / itemHeight);
       const items = list.querySelectorAll("ion-item");
+      const prevIndex = middleIndex - 1;
+      const middleItem = items[middleIndex];
       const itemCount = items.length;
 
       if (newIndex < 0) {
@@ -31,6 +33,32 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       } else {
         list.scrollTop = newIndex * itemHeight;
       }
+
+      // Use setTimeout to add a small delay before updating the team.
+      setTimeout(() => {
+        setTeam(middleItem.innerText);
+      }, 0);
+
+      const prevItem = items[prevIndex];
+      const nextItem = items[middleIndex + 1];
+
+      // bold text effect
+      if (prevItem && prevItem.classList.contains("middle-item")) {
+        prevItem.classList.remove("middle-item");
+      }
+      if (nextItem && nextItem.classList.contains("middle-item")) {
+        nextItem.classList.remove("middle-item");
+      }
+      middleItem && middleItem.classList.add("middle-item");
+
+      // Add a CSS transition to make the scrolling smoother.
+      list.style.transition = "all 5s ease-in-out";
+
+      // Use requestAnimationFrame to update the scroll position.
+      requestAnimationFrame(() => {
+        list.style.transition = ""; // clear the transition after the animation completes
+        list.scrollTop = newIndex * itemHeight;
+      });
 
       e.preventDefault();
     }
@@ -46,28 +74,28 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       const middleItem = items[middleIndex];
       const prevItem = items[prevIndex];
       const nextItem = items[middleIndex + 1];
+
       // bold text effect
       if (prevItem && prevItem.classList.contains("middle-item")) {
         prevItem.classList.remove("middle-item");
       }
-
       if (
         nextItem &&
         nextItem.classList.contains("middle-item")
       ) {
         nextItem.classList.remove("middle-item");
       }
-
-      middleItem && middleItem.classList.add("middle-item");
-      setTeam(middleItem.innerText);
+      middleItem && middleItem.classList.remove("middle-item");
     }
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
 
+    setTeam(""); // Update team to not be selected when the mouse is up 
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousedown", handleMouseUp);
     };
   }, [dragging, dragStartY, setTeam]);
 
