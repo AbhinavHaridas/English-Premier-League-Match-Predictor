@@ -85,13 +85,14 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       ) {
         nextItem.classList.remove("middle-item");
       }
-      middleItem && middleItem.classList.remove("middle-item");
+      middleItem && middleItem.classList.add("middle-item");
     }
+    
+    setTeam(middleItem.innerText); // Update team to not be selected when the mouse is up 
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
 
-    setTeam(""); // Update team to not be selected when the mouse is up 
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
