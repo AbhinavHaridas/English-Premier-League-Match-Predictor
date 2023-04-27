@@ -1,5 +1,4 @@
 .container {
-    margin-top: 20vmin;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,9 +7,14 @@
     height: 50vmin; 
     width: 80vmin;
     padding-bottom: 5vmin;
-    margin-left: 50vmin; 
     border-radius: 2vmin;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d6eb1c;
+    color: #462fb5;
 }
 
 .container > * {
@@ -22,10 +26,12 @@ ion-select {
 }
 
 ion-button {
-    width: 20vmin
+    width: 24vmin;
 }
-.title {
-    font-size: 30px;
+
+.home-title {
+    font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 0.25vmin;
+    color: #462fb5;
 }

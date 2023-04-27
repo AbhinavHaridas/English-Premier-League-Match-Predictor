@@ -10,3 +10,9 @@
 .list-container::-webkit-scrollbar{
     width: 0px;
 }
+
+.home-wrap {
+    background-color: #462fb5;
+    font-style: normal;
+    height: 100%;
+}
