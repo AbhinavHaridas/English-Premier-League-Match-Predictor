@@ -1,4 +1,4 @@
-import { IonContent, IonItem, IonLabel, IonList } from "@ionic/react";
+import { IonItem, IonLabel, IonList } from "@ionic/react";
 import React, { useEffect, useRef, useState } from "react";
 import { TEAMS } from "../Teams";
 import "./ScrollList.css";
