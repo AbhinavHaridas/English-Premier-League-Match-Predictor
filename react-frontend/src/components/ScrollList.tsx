@@ -20,10 +20,12 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       const scrollTop = list.scrollTop;
       const deltaY = e.clientY - dragStartY;
       const middleIndex = Math.ceil(scrollTop / itemHeight);
+      const prevIndex = middleIndex - 1;
       const newIndex = middleIndex - Math.round(deltaY / itemHeight);
       const items = list.querySelectorAll("ion-item");
-      const prevIndex = middleIndex - 1;
       const middleItem = items[middleIndex];
+      const prevItem = items[prevIndex];
+      const nextItem = items[middleIndex + 1];
       const itemCount = items.length;
 
       if (newIndex < 0) {
@@ -34,31 +36,19 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
         list.scrollTop = newIndex * itemHeight;
       }
 
-      // Use setTimeout to add a small delay before updating the team.
-      setTimeout(() => {
-        setTeam(middleItem.innerText);
-      }, 0);
-
-      const prevItem = items[prevIndex];
-      const nextItem = items[middleIndex + 1];
-
       // bold text effect
       if (prevItem && prevItem.classList.contains("middle-item")) {
         prevItem.classList.remove("middle-item");
       }
-      if (nextItem && nextItem.classList.contains("middle-item")) {
+      if (
+        nextItem &&
+        nextItem.classList.contains("middle-item")
+      ) {
         nextItem.classList.remove("middle-item");
       }
       middleItem && middleItem.classList.add("middle-item");
 
-      // Add a CSS transition to make the scrolling smoother.
-      list.style.transition = "all 5s ease-in-out";
-
-      // Use requestAnimationFrame to update the scroll position.
-      requestAnimationFrame(() => {
-        list.style.transition = ""; // clear the transition after the animation completes
-        list.scrollTop = newIndex * itemHeight;
-      });
+      setTeam(middleItem.innerText);
 
       e.preventDefault();
     }
@@ -87,8 +77,6 @@ const ScrollList: React.FC<ScrollListProps> = ({ setTeam }) => {
       }
       middleItem && middleItem.classList.add("middle-item");
     }
-    
-    setTeam(middleItem.innerText); // Update team to not be selected when the mouse is up 
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
