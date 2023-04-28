@@ -37,6 +37,7 @@ ion-item {
     font-family: 'Domine' !important;
     color: #c5c5c5;
     font-size: 14px;
+    user-select: none;
 }
 
 .middle-item{
@@ -45,5 +46,5 @@ ion-item {
     font-weight: 800;
     transition: font-size 0.3s ease-in-out;
     color: white;
-    filter: brightness(100%);
+    cursor:default;
 }
